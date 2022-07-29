@@ -1,5 +1,6 @@
 package com.liuliu.outstanding.controller;
 
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
@@ -11,11 +12,16 @@ public class FileController {
 
     @PostMapping("uploadFile")
     public String uploadFile(MultipartFile file) throws IOException {
-        File destFile = new File("D:\\develop\\gitHub\\outstandingproject\\src\\main\\resources\\test-upload.txt");
-        FileWriter fileWriter = new FileWriter(destFile);
-        InputStream inputStream = file.getInputStream();
-        fileWriter.write(inputStream.read());
-        fileWriter.close();
+        String path = System.getProperty("user.dir");
+        File destFile = new File(path + File.separator + "test-upload.txt");
+        try {
+            if (!destFile.exists()) {
+                destFile.mkdirs();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        file.transferTo(destFile);
         return "success!";
     }
 
