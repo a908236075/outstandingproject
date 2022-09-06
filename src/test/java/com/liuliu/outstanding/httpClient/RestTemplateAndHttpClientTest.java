@@ -2,11 +2,10 @@ package com.liuliu.outstanding.httpClient;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpStatus;
+import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.AuthenticationException;
 import org.apache.http.auth.UsernamePasswordCredentials;
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
@@ -15,10 +14,10 @@ import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.impl.auth.BasicScheme;
+import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
-import org.apache.http.message.BasicNameValuePair;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -29,9 +28,6 @@ import org.springframework.web.client.RestTemplate;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -86,7 +82,7 @@ class RestTemplateAndHttpClientTest {
         Assertions.assertEquals(code, HttpStatus.SC_OK);
     }
 
-    @Test
+//    @Test
     void uploadFile() throws IOException {
         CloseableHttpClient client = HttpClients.createDefault();
         HttpPost httpPost = new HttpPost("http://127.0.0.1:8080/uploadFile");
@@ -115,6 +111,18 @@ class RestTemplateAndHttpClientTest {
         requestFactory.setHttpClient(httpClient);
         ResponseEntity<String> responseEntity = new RestTemplate(requestFactory).exchange(urlOverHttps, HttpMethod.GET, null, String.class);
         Assertions.assertEquals(responseEntity.getStatusCode().value(), HttpStatus.SC_OK);
+    }
+
+//    @Test
+    void basicAutTest() throws IOException {
+        String urlOverHttps
+                = "https://www.baidu.com";
+        BasicCredentialsProvider provider = new BasicCredentialsProvider();
+        UsernamePasswordCredentials credentials = new UsernamePasswordCredentials("usr1", "password1");
+        provider.setCredentials(AuthScope.ANY, credentials);
+        CloseableHttpClient client = HttpClientBuilder.create().setDefaultCredentialsProvider(provider).build();
+        CloseableHttpResponse response = client.execute(new HttpGet(urlOverHttps));
+        Assertions.assertEquals(response.getStatusLine().getStatusCode(), HttpStatus.SC_OK);
     }
 
 

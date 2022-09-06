@@ -11,10 +11,12 @@
     <groupId>com.liuliu</groupId>
     <artifactId>outstanding</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>war</packaging>
     <name>outstanding</name>
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>1.8</java.version>
+        <maven.test.skip>true</maven.test.skip>
     </properties>
     <dependencies>
         <dependency>
@@ -56,6 +58,17 @@
             <version>5.8.2</version>
             <scope>test</scope>
         </dependency>
+        <!--mybatis plus-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.12</version>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.4.2</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -70,7 +83,13 @@
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
+
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
             </plugin>
         </plugins>
     </build>
