@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- 对于复杂的定义可以使用import -->
+    <!-- service.xml必须是在同一个文件下-->
+
+
+    <bean id="defaultServiceLocator" class="com.liuliu.outstanding.factory.DefaultServiceLocator">
+        <!-- additional collaborators and configuration for this bean go here -->
+    </bean>
+    <bean id="clientService" class="com.liuliu.outstanding.factory.ClientService">
+        <!-- additional collaborators and configuration for this bean go here -->
+    </bean>
+
+
+    <!-- more bean definitions go here -->
+
+</beans>
