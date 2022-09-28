@@ -14,6 +14,16 @@
         <!-- additional collaborators and configuration for this bean go here -->
     </bean>
 
+    <bean id="father" class="com.liuliu.outstanding.common.Parent" abstract="true">
+        <!-- additional collaborators and configuration for this bean go here -->
+        <property name="age" value="39"/>
+        <property name="name" value="Father"/>
+    </bean>
+
+    <bean id="son" class="com.liuliu.outstanding.common.Son" parent="father">
+        <property name="name" value="Son"></property>
+    </bean>
+
 
     <!-- more bean definitions go here -->
 

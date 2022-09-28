@@ -1,5 +1,7 @@
 package com.liuliu.outstanding;
 
+import com.liuliu.outstanding.common.Parent;
+import com.liuliu.outstanding.common.Son;
 import com.liuliu.outstanding.entity.Student;
 import com.liuliu.outstanding.factory.ClientService;
 import com.liuliu.outstanding.factory.DefaultServiceLocator;
@@ -34,7 +36,14 @@ public class OutstandingApplication {
         ClientService clientServiceInstance = defaultServiceLocator.createClientServiceInstance();
         System.out.println(clientService == clientServiceInstance);
         System.out.println(clientService == clientService2);
-
+        Son son = (Son) context.getBean("son");
+        System.out.println(son.getAge());
+        System.out.println(son.getName());
+       /* Parent father = (Parent) context.getBean("father");
+        System.out.println(father.getName());*/
+        AnnotationConfigApplicationContext annotationConfigApplicationContext2= new AnnotationConfigApplicationContext(Son.class);
+        Son son1 = annotationConfigApplicationContext2.getBean("son", Son.class);
+        System.out.println(son1.getAge());
     }
 
 
