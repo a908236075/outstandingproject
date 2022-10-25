@@ -23,6 +23,7 @@ public class OutstandingApplication {
         SpringApplication.run(OutstandingApplication.class, args);
         // create and configure beans
         ApplicationContext context = new ClassPathXmlApplicationContext("Bean1.xml");
+        ApplicationContext context2 = new ClassPathXmlApplicationContext();
         AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext(BeanProcessMapper.class);
         ConfigurableListableBeanFactory beanFactory = annotationConfigApplicationContext.getBeanFactory();
         BeanProcessMapper beanProcessMapper = annotationConfigApplicationContext.getBean("beanProcessMapper", BeanProcessMapper.class);

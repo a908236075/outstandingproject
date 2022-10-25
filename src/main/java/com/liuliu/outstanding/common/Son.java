@@ -22,5 +22,5 @@ public class Son extends Parent {
     public void  sayGoodbye(){
         System.out.println("再见!!");
     }
-
+    
 }
