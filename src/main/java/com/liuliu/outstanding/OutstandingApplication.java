@@ -1,19 +1,15 @@
 package com.liuliu.outstanding;
 
-import com.liuliu.outstanding.common.Parent;
 import com.liuliu.outstanding.common.Son;
-import com.liuliu.outstanding.entity.Student;
 import com.liuliu.outstanding.factory.ClientService;
 import com.liuliu.outstanding.factory.DefaultServiceLocator;
 import com.liuliu.outstanding.mapper.BeanProcessMapper;
-import com.liuliu.outstanding.service.impl.StudentServiceImpl;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.context.support.GenericApplicationContext;
 
 @SpringBootApplication
 public class OutstandingApplication {
@@ -45,6 +41,8 @@ public class OutstandingApplication {
         AnnotationConfigApplicationContext annotationConfigApplicationContext2= new AnnotationConfigApplicationContext(Son.class);
         Son son1 = annotationConfigApplicationContext2.getBean("son", Son.class);
         System.out.println(son1.getAge());
+
+
     }
 
 
