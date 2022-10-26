@@ -21,7 +21,7 @@ public class LifeConfig {
 
     @Bean
     @Qualifier("son1")
-    @Primary
+//    @Primary
     public Son getSon1() {
         Son son = new Son();
         son.setName("张三");

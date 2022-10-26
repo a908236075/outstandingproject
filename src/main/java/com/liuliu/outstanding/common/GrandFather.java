@@ -9,6 +9,4 @@ public class GrandFather {
     @Autowired
     @Qualifier("son1")
     private Son son;
-
-
 }
