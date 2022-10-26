@@ -9,7 +9,6 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
 @Data
-@Component
 public class Son extends Parent {
 
     private String name;
@@ -20,6 +19,9 @@ public class Son extends Parent {
 
     public Son(Life life) {
         this.life = life;
+    }
+
+    public Son() {
     }
 
     @PostConstruct
