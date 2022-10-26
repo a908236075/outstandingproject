@@ -19,8 +19,13 @@
         <property name="age" value="39"/>
         <property name="name" value="Father"/>
     </bean>
-
-    <bean id="son" class="com.liuliu.outstanding.common.Son" parent="father">
+    <bean id="life" class="com.liuliu.outstanding.common.Life">
+    </bean>
+    <bean id="son" class="com.liuliu.outstanding.common.Son" parent="father" >
+        <property name="age" value="2"/>
+        <constructor-arg name="life">
+            <ref bean="life"></ref>
+        </constructor-arg>
         <property name="name" value="Son"></property>
     </bean>
 

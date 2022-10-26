@@ -1,5 +1,7 @@
 package com.liuliu.outstanding.common;
 
+import com.liuliu.outstanding.entity.Student;
+import com.liuliu.outstanding.factory.ClientService;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
@@ -14,13 +16,21 @@ public class Son extends Parent {
 
     private int age;
 
+    private Life life;
+
+    public Son(Life life) {
+        this.life = life;
+    }
+
     @PostConstruct
     public void sayFather() {
         System.out.println("好爸爸!!");
     }
+
     @PreDestroy
-    public void  sayGoodbye(){
+    public void sayGoodbye() {
         System.out.println("再见!!");
     }
-    
+
+
 }

@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.support.GenericXmlApplicationContext;
 
 @SpringBootApplication
 public class OutstandingApplication {
@@ -38,9 +39,9 @@ public class OutstandingApplication {
         System.out.println(son.getName());
        /* Parent father = (Parent) context.getBean("father");
         System.out.println(father.getName());*/
-        AnnotationConfigApplicationContext annotationConfigApplicationContext2= new AnnotationConfigApplicationContext(Son.class);
+       /* AnnotationConfigApplicationContext annotationConfigApplicationContext2= new AnnotationConfigApplicationContext(Son.class);
         Son son1 = annotationConfigApplicationContext2.getBean("son", Son.class);
-        System.out.println(son1.getAge());
+        System.out.println(son1.getAge());*/
 
 
     }

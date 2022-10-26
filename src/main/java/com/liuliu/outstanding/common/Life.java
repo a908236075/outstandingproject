@@ -2,16 +2,18 @@ package com.liuliu.outstanding.common;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 
-public class Life implements BeanPostProcessor {
+@Component
+public class Life{
+    private String time;
 
-    @Override
-    public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-        return bean;
+    public String getTime() {
+        return time;
     }
 
-    @Override
-    public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-        return bean;
+    public void setTime(String time) {
+        this.time = time;
     }
 }
